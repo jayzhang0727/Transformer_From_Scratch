@@ -36,7 +36,7 @@ class MultiheadAttention(nn.Module):
                 nn.init.xavier_normal_(p)
 
     def forward(self, query, key, value, attn_mask=None, key_padding_mask=None):
-        '''
+        """
         Input (shape):
         query: [tgt_len, batch_size, embed_dim]
         key: [src_len, batch_size, embed_dim] 
@@ -47,7 +47,8 @@ class MultiheadAttention(nn.Module):
         Return (shape):
         attn_output: [tgt_len, batch_size, embed_dim]
         attn_output_weights: [batch_size, tgt_len, src_len]
-        '''
+        """
+        
         return multi_head_attention_forward(query, key, value, self.num_heads,
                                             self.dropout,
                                             out_proj=self.out_proj,

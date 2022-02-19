@@ -38,15 +38,15 @@ class MultiheadAttention(nn.Module):
     def forward(self, query, key, value, attn_mask=None, key_padding_mask=None):
         """
         Input (shape):
-        query: [tgt_len, batch_size, embed_dim]
-        key: [src_len, batch_size, embed_dim] 
-        value: [src_len, batch_size, embed_dim]
-        attn_mask: [tgt_len, src_len] or [batch_size * num_heads, tgt_len, src_len]
-        key_padding_mask: [batch_size, src_len]
-        
-        Return (shape):
-        attn_output: [tgt_len, batch_size, embed_dim]
-        attn_output_weights: [batch_size, tgt_len, src_len]
+            query: [tgt_len, batch_size, embed_dim]
+            key: [src_len, batch_size, embed_dim] 
+            value: [src_len, batch_size, embed_dim]
+            attn_mask: [tgt_len, src_len] or [batch_size * num_heads, tgt_len, src_len]
+            key_padding_mask: [batch_size, src_len]
+            
+            Return (shape):
+            attn_output: [tgt_len, batch_size, embed_dim]
+            attn_output_weights: [batch_size, tgt_len, src_len]
         """
         
         return multi_head_attention_forward(query, key, value, self.num_heads,
